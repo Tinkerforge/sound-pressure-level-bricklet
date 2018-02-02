@@ -20,6 +20,6 @@ for n in range(SIZE):
     values_rms.append(value)
 
 s += ', '.join(map(str, values_hamming)) + '};';
-s += '\nconst double hamming_rms = '
+s += '\nconst double lut_hamming_rms = '
 s += str(sqrt(mean(square(asarray(values_rms))))) + ';'
 print(s)
