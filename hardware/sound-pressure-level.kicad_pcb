@@ -76,7 +76,7 @@
     (pad_drill 0)
     (pad_to_mask_clearance 0)
     (aux_axis_origin 0 0)
-    (visible_elements FFFFFF7F)
+    (visible_elements FFFF7F7F)
     (pcbplotparams
       (layerselection 0x00010_00000000)
       (usegerberextensions false)
@@ -6426,7 +6426,7 @@
   )
 
   (module kicad-libraries:WEEE_7mm (layer B.Cu) (tedit 5922FFAE) (tstamp 5A20F9BD)
-    (at 133.9 141 180)
+    (at 142.6 141 180)
     (fp_text reference VAL (at 0 0 180) (layer B.SilkS) hide
       (effects (font (size 0.2 0.2) (thickness 0.05)) (justify mirror))
     )
@@ -6551,7 +6551,7 @@
   )
 
   (module kicad-libraries:CE_5mm (layer B.Cu) (tedit 5922FFD4) (tstamp 5A212E10)
-    (at 150.1 141 180)
+    (at 148.8 141 180)
     (fp_text reference VAL (at 0 0 180) (layer B.SilkS) hide
       (effects (font (size 0.2 0.2) (thickness 0.05)) (justify mirror))
     )
@@ -6645,7 +6645,7 @@
   )
 
   (module kicad-libraries:Logo_CoMCU (layer B.Cu) (tedit 0) (tstamp 5A216264)
-    (at 147.1 132.15 180)
+    (at 136.4 141 180)
     (fp_text reference G*** (at 0 0 180) (layer B.SilkS) hide
       (effects (font (thickness 0.3)) (justify mirror))
     )
@@ -6926,7 +6926,7 @@
   (gr_text Status (at 132.45 144.35) (layer F.SilkS)
     (effects (font (size 0.7 0.7) (thickness 0.15)))
   )
-  (gr_text Sound-Pressure-Level (at 141.7 152.6) (layer F.SilkS)
+  (gr_text "Sound Pressure Level" (at 141.7 152.6) (layer F.SilkS)
     (effects (font (size 0.7 0.7) (thickness 0.15)))
   )
   (gr_text tinkerforge.com (at 147.2 134.25) (layer F.SilkS)

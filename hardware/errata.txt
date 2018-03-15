@@ -1,3 +1,0 @@
-remove R9, new short routing	done
-add debug pad			done
-
