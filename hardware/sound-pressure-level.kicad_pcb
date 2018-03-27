@@ -550,6 +550,7 @@
   (module kicad-libraries:ICS-43432 (layer F.Cu) (tedit 5A12F62C) (tstamp 5A1FCD32)
     (at 142.6 150.55 270)
     (path /5A16B9F3)
+    (attr smd)
     (fp_text reference U6 (at -1.8 0.16 270) (layer F.Fab)
       (effects (font (size 0.15 0.15) (thickness 0.0375)))
     )
