@@ -1,5 +1,4 @@
 EESchema Schematic File Version 2
-LIBS:tinkerforge
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -29,7 +28,6 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:sound-pressure-level-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -446,7 +444,7 @@ L R_PACK4 RP1
 U 1 1 5A0AE535
 P 1800 1950
 F 0 "RP1" H 1800 2400 50  0000 C CNN
-F 1 "220" H 1800 1900 50  0000 C CNN
+F 1 "82" H 1800 1900 50  0000 C CNN
 F 2 "kicad-libraries:4X0402" H 1800 1950 50  0001 C CNN
 F 3 "" H 1800 1950 50  0000 C CNN
 	1    1800 1950
