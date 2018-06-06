@@ -1,0 +1,2 @@
+add tf logo to front
+fix logo positions
