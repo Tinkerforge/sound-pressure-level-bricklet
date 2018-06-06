@@ -32,13 +32,13 @@
 extern const uint16_t pcm_fft_sizes[4];
 extern PCM pcm;
 
-CallbackValue callback_value_decibel;
+CallbackValue_uint16_t callback_value_decibel;
 
 BootloaderHandleMessageResponse handle_message(const void *message, void *response) {
 	switch(tfp_get_fid_from_message(message)) {
-		case FID_GET_DECIBEL: return get_callback_value(message, response, &callback_value_decibel);
-		case FID_SET_DECIBEL_CALLBACK_CONFIGURATION: return set_callback_value_callback_configuration(message, &callback_value_decibel);
-		case FID_GET_DECIBEL_CALLBACK_CONFIGURATION: return get_callback_value_callback_configuration(message, response, &callback_value_decibel);
+		case FID_GET_DECIBEL: return get_callback_value_uint16_t(message, response, &callback_value_decibel);
+		case FID_SET_DECIBEL_CALLBACK_CONFIGURATION: return set_callback_value_callback_configuration_uint16_t(message, &callback_value_decibel);
+		case FID_GET_DECIBEL_CALLBACK_CONFIGURATION: return get_callback_value_callback_configuration_uint16_t(message, response, &callback_value_decibel);
 		case FID_GET_SPECTRUM_LOW_LEVEL: return get_spectrum_low_level(message, response);
 		case FID_SET_SPECTRUM_CALLBACK_CONFIGURATION: return set_spectrum_callback_configuration(message);
 		case FID_GET_SPECTRUM_CALLBACK_CONFIGURATION: return get_spectrum_callback_configuration(message, response);
@@ -47,7 +47,6 @@ BootloaderHandleMessageResponse handle_message(const void *message, void *respon
 		default: return HANDLE_MESSAGE_RESPONSE_NOT_SUPPORTED;
 	}
 }
-
 
 BootloaderHandleMessageResponse get_spectrum_low_level(const GetSpectrumLowLevel *data, GetSpectrumLowLevel_Response *response) {
 	response->header.length = sizeof(GetSpectrumLowLevel_Response);
@@ -107,9 +106,8 @@ BootloaderHandleMessageResponse get_configuration(const GetConfiguration *data, 
 	return HANDLE_MESSAGE_RESPONSE_NEW_MESSAGE;
 }
 
-
 bool handle_decibel_callback(void) {
-	return handle_callback_value_callback(&callback_value_decibel, FID_CALLBACK_DECIBEL);
+	return handle_callback_value_callback_uint16_t(&callback_value_decibel, FID_CALLBACK_DECIBEL);
 }
 
 bool handle_spectrum_low_level_callback(void) {
@@ -168,7 +166,7 @@ void communication_tick(void) {
 }
 
 void communication_init(void) {
-	callback_value_init(&callback_value_decibel, pcm_get_decibel);;
+	callback_value_init_uint16_t(&callback_value_decibel, pcm_get_decibel);;
 
 	communication_callback_init();
 }
