@@ -137,5 +137,12 @@ void ics43432_fill_buffer(void) {
 }
 
 void ics43432_tick(void) {
-	// Unused
+	if(NVIC_GetEnableIRQ(ICS43432_IRQ_SD)) {
+		// If the RX buffer is filled up, something went wrong.
+		// In this case we just flush the buffer to be sure that we get
+		// another fill level change from 15 to 16 that generates the i2s interrupt
+		if(XMC_USIC_CH_RXFIFO_IsFull(ICS43432_USIC)) {
+			XMC_USIC_CH_RXFIFO_Flush(ICS43432_USIC);
+		}
+	}
 }

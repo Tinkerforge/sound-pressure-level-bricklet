@@ -42,6 +42,7 @@ int main(void) {
 	while(true) {
 		bootloader_tick();
 		communication_tick();
+		ics43432_tick();
 		pcm_tick();
 	}
 }
