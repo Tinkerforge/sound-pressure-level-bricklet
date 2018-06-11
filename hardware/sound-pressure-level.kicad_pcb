@@ -1,9 +1,9 @@
-(kicad_pcb (version 4) (host pcbnew 4.0.7-e2-6376~58~ubuntu16.04.1)
+(kicad_pcb (version 4) (host pcbnew 4.0.2+dfsg1-stable)
 
   (general
     (links 61)
     (no_connects 0)
-    (area 13.96714 127.644999 155.955001 196.045)
+    (area 129.909499 128.309499 155.290501 153.690501)
     (thickness 1.6)
     (drawings 19)
     (tracks 257)
@@ -584,7 +584,7 @@
     (model Sensors_Detectors/ICS43432-SoundPressure.wrl
       (at (xyz -0.04 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 180 0 0))
+      (rotate (xyz 0 0 0))
     )
   )
 
