@@ -1,2 +1,5 @@
 2018-06-07: 2.0.0 (f45b9ab)
 - Initial version
+
+2018-06-25: 2.0.1 (TBD)
+- Fix packet length bug in get_spectrum_callback_configuration function

@@ -82,7 +82,7 @@ BootloaderHandleMessageResponse get_spectrum_callback_configuration(const GetSpe
 	response->header.length = sizeof(GetSpectrumCallbackConfiguration_Response);
 	response->period        = pcm.api_spectrum_period;
 
-	return HANDLE_MESSAGE_RESPONSE_EMPTY;
+	return HANDLE_MESSAGE_RESPONSE_NEW_MESSAGE;
 }
 
 BootloaderHandleMessageResponse set_configuration(const SetConfiguration *data) {
