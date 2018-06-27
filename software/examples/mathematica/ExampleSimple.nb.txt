@@ -1,0 +1,19 @@
+Needs["NETLink`"]
+LoadNETAssembly["Tinkerforge",NotebookDirectory[]<>"../../.."]
+
+host="localhost"
+port=4223
+uid="XYZ"(*Change XYZ to the UID of your Sound Pressure Level Bricklet*)
+
+(*Create IPConnection and device object*)
+ipcon=NETNew["Tinkerforge.IPConnection"]
+spl=NETNew["Tinkerforge.BrickletSoundPressureLevel",uid,ipcon]
+ipcon@Connect[host,port]
+
+(*Get current decibel*)
+Print["Decibel: "<>ToString[N[Quantity[spl@GetDecibel[],"dB(A)/10"]]]]
+
+(*Clean up*)
+ipcon@Disconnect[]
+ReleaseNETObject[spl]
+ReleaseNETObject[ipcon]
