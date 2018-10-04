@@ -3,3 +3,6 @@
 
 2018-06-25: 2.0.1 (1bef947)
 - Fix packet length bug in get_spectrum_callback_configuration function
+
+2018-10-04: 2.0.2 (TBD)
+- Fix race condition with potential buffer overflow (through bricklib2)
