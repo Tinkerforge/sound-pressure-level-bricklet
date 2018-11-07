@@ -1,29 +1,30 @@
 use std::{error::Error, io, thread};
-use tinkerforge::{ipconnection::IpConnection, sound_pressure_level_bricklet::*};
+use tinkerforge::{ip_connection::IpConnection, sound_pressure_level_bricklet::*};
 
-const HOST: &str = "127.0.0.1";
+const HOST: &str = "localhost";
 const PORT: u16 = 4223;
-const UID: &str = "XYZ"; // Change XYZ to the UID of your Sound Pressure Level Bricklet
+const UID: &str = "XYZ"; // Change XYZ to the UID of your Sound Pressure Level Bricklet.
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let ipcon = IpConnection::new(); // Create IP connection
-    let sound_pressure_level_bricklet = SoundPressureLevelBricklet::new(UID, &ipcon); // Create device object
+    let ipcon = IpConnection::new(); // Create IP connection.
+    let spl = SoundPressureLevelBricklet::new(UID, &ipcon); // Create device object.
 
-    ipcon.connect(HOST, PORT).recv()??; // Connect to brickd
-                                        // Don't use device before ipcon is connected
+    ipcon.connect((HOST, PORT)).recv()??; // Connect to brickd.
+                                          // Don't use device before ipcon is connected.
 
-    //Create listener for decibel events.
-    let decibel_listener = sound_pressure_level_bricklet.get_decibel_receiver();
-    // Spawn thread to handle received events. This thread ends when the sound_pressure_level_bricklet
+    // Create receiver for decibel events.
+    let decibel_receiver = spl.get_decibel_receiver();
+
+    // Spawn thread to handle received events. This thread ends when the `spl` object
     // is dropped, so there is no need for manual cleanup.
     thread::spawn(move || {
-        for event in decibel_listener {
-            println!("Decibel: {}{}", event as f32 / 10.0, " dB(A)");
+        for decibel in decibel_receiver {
+            println!("Decibel: {} dB(A)", decibel as f32 / 10.0);
         }
     });
 
-    // Set period for decibel callback to 1s (1000ms) without a threshold
-    sound_pressure_level_bricklet.set_decibel_callback_configuration(1000, false, 'x', 0, 0);
+    // Set period for decibel callback to 1s (1000ms) without a threshold.
+    spl.set_decibel_callback_configuration(1000, false, 'x', 0, 0);
 
     println!("Press enter to exit.");
     let mut _input = String::new();
