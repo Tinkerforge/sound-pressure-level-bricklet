@@ -19,7 +19,7 @@ func main() {
 	// Don't use device before ipcon is connected.
 
 	spl.RegisterDecibelCallback(func(decibel uint16) {
-		fmt.Printf("Decibel: %d dB(A)\n", float64(decibel)/10.0)
+		fmt.Printf("Decibel: %f dB(A)\n", float64(decibel)/10.0)
 	})
 
 	// Set period for decibel callback to 1s (1000ms) without a threshold.

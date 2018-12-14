@@ -19,7 +19,7 @@ func main() {
 	// Don't use device before ipcon is connected.
 
 	spl.RegisterDecibelCallback(func(decibel uint16) {
-		fmt.Printf("Decibel: %d dB(A)\n", float64(decibel)/10.0)
+		fmt.Printf("Decibel: %f dB(A)\n", float64(decibel)/10.0)
 	})
 
 	// Configure threshold for decibel "greater than 60 dB(A)"
