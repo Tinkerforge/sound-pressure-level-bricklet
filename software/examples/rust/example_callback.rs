@@ -1,5 +1,8 @@
-use std::{error::Error, io, thread};
-use tinkerforge::{ip_connection::IpConnection, sound_pressure_level_bricklet::*};
+use std::{io, error::Error};
+use std::thread;
+use tinkerforge::{ip_connection::IpConnection, 
+                  sound_pressure_level_bricklet::*};
+
 
 const HOST: &str = "localhost";
 const PORT: u16 = 4223;
@@ -10,21 +13,21 @@ fn main() -> Result<(), Box<dyn Error>> {
     let spl = SoundPressureLevelBricklet::new(UID, &ipcon); // Create device object.
 
     ipcon.connect((HOST, PORT)).recv()??; // Connect to brickd.
-                                          // Don't use device before ipcon is connected.
+    // Don't use device before ipcon is connected.
 
-    let decibel_receiver = spl.get_decibel_callback_receiver();
+     let decibel_receiver = spl.get_decibel_callback_receiver();
 
-    // Spawn thread to handle received callback messages.
-    // This thread ends when the `spl` object
-    // is dropped, so there is no need for manual cleanup.
-    thread::spawn(move || {
-        for decibel in decibel_receiver {
-            println!("Decibel: {} dB(A)", decibel as f32 / 10.0);
-        }
-    });
+        // Spawn thread to handle received callback messages. 
+        // This thread ends when the `spl` object
+        // is dropped, so there is no need for manual cleanup.
+        thread::spawn(move || {
+            for decibel in decibel_receiver {           
+                		println!("Decibel: {} dB(A)", decibel as f32 /10.0);
+            }
+        });
 
-    // Set period for decibel callback to 1s (1000ms) without a threshold.
-    spl.set_decibel_callback_configuration(1000, false, 'x', 0, 0);
+		// Set period for decibel callback to 1s (1000ms) without a threshold.
+		spl.set_decibel_callback_configuration(1000, false, 'x', 0, 0);
 
     println!("Press enter to exit.");
     let mut _input = String::new();
