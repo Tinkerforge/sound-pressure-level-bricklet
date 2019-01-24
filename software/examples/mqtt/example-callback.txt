@@ -1,0 +1,10 @@
+
+
+# Change XYZ to the UID of your Sound Pressure Level Bricklet
+
+setup:
+	# Handle incoming decibel callbacks
+	subscribe to tinkerforge/callback/sound_pressure_level_bricklet/XYZ/decibel
+	publish '{"register": true}' to tinkerforge/register/sound_pressure_level_bricklet/XYZ/decibel # Register decibel callback
+	# Set period for decibel callback to 1s (1000ms) without a threshold
+	publish '{"period": 1000, "value_has_to_change": false, "option": "off", "min_decibel": 0, "max_decibel": 0}' to tinkerforge/request/sound_pressure_level_bricklet/XYZ/set_decibel_callback_configuration  

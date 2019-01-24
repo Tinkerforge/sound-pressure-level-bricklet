@@ -1,0 +1,8 @@
+
+
+# Change XYZ to the UID of your Sound Pressure Level Bricklet
+
+setup:
+	# Get current decibel
+	subscribe to tinkerforge/response/sound_pressure_level/XYZ/get_decibel
+	publish '' to tinkerforge/request/sound_pressure_level_bricklet/XYZ/get_decibel 
