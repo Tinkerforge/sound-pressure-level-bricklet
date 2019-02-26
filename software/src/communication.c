@@ -166,7 +166,7 @@ void communication_tick(void) {
 }
 
 void communication_init(void) {
-	callback_value_init_uint16_t(&callback_value_decibel, pcm_get_decibel);;
+	callback_value_init_uint16_t(&callback_value_decibel, pcm_get_decibel);
 
 	communication_callback_init();
 }
