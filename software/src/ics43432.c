@@ -37,9 +37,12 @@ volatile int32_t *ics43432_buffer = pcm.buffer;
 int32_t *const ics43432_buffer_start = pcm.buffer;
 volatile int32_t *ics43432_buffer_end = pcm.buffer + PCM_BUFFER_SIZE + 1;
 
+// Use local pointer to save the time for accessing the struct
+volatile const uint32_t *ICS43432_USIC_OUTR_PTR = &ICS43432_USIC->OUTR;
+
 void __attribute__((optimize("unroll-loops"))) __attribute__((optimize("-O3"))) __attribute__ ((section (".ram_code"))) ics43432_sd_irq_handler(void) {
 	for(uint8_t i = 0; i < 16; i++) {
-		const uint32_t value = ICS43432_USIC->OUTR;
+		const uint32_t value = *ICS43432_USIC_OUTR_PTR;
 		if(!(value & 1 << 20)) { // Check OUTR.RCI[0] == 1 => left channel
 			if(value & (1 << 16)) { // Check OUTR.RCI[0] == 1 => first data of frame
 				*ics43432_buffer = (value & 0xFFFF) << 16;
