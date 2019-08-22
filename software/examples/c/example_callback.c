@@ -33,7 +33,7 @@ int main(void) {
 	// Register decibel callback to function cb_decibel
 	sound_pressure_level_register_callback(&spl,
 	                                       SOUND_PRESSURE_LEVEL_CALLBACK_DECIBEL,
-	                                       (void *)cb_decibel,
+	                                       (void (*)(void))cb_decibel,
 	                                       NULL);
 
 	// Set period for decibel callback to 1s (1000ms) without a threshold
