@@ -25,5 +25,5 @@ if __name__ == "__main__":
     # Set period for decibel callback to 1s (1000ms) without a threshold
     spl.set_decibel_callback_configuration(1000, False, "x", 0, 0)
 
-    raw_input("Press key to exit\n") # Use input() in Python 3
+    input("Press key to exit\n") # Use raw_input() in Python 2
     ipcon.disconnect()
