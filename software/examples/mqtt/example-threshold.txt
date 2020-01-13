@@ -4,7 +4,7 @@ setup:
 	# Handle incoming decibel callbacks
 	subscribe to tinkerforge/callback/sound_pressure_level_bricklet/XYZ/decibel
 	publish '{"register": true}' to tinkerforge/register/sound_pressure_level_bricklet/XYZ/decibel # Register decibel callback
-	
+
 	# Configure threshold for decibel "greater than 60 dB(A)"
 	# with a debounce period of 1s (1000ms)
 	publish '{"period": 1000, "value_has_to_change": false, "option": "greater", "min": 600, "max": 0}' to tinkerforge/request/sound_pressure_level_bricklet/XYZ/set_decibel_callback_configuration
