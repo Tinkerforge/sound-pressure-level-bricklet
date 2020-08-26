@@ -11,13 +11,11 @@ void example_setup(TF_HalContext *hal) {
 	// Create device object
 	check(tf_sound_pressure_level_create(&spl, UID, hal), "create device object");
 
-
 	// Get current decibel
 	uint16_t decibel;
 	check(tf_sound_pressure_level_get_decibel(&spl, &decibel), "get decibel");
 
 	tf_hal_printf("Decibel: %d 1/%d dB(A)\n", decibel, 10.0);
-
 }
 
 void example_loop(TF_HalContext *hal) {
