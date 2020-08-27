@@ -5,14 +5,19 @@
 
 void check(int rc, const char* msg);
 
+void example_setup(TF_HalContext *hal);
+void example_loop(TF_HalContext *hal);
+
+
 // Callback function for decibel callback
-void decibel_handler(TF_SoundPressureLevel *device, uint16_t decibel, void *user_data) {
+static void decibel_handler(TF_SoundPressureLevel *device, uint16_t decibel,
+                            void *user_data) {
 	(void)device; (void)user_data; // avoid unused parameter warning
 
 	tf_hal_printf("Decibel: %d 1/%d dB(A)\n", decibel, 10.0);
 }
 
-TF_SoundPressureLevel spl;
+static TF_SoundPressureLevel spl;
 
 void example_setup(TF_HalContext *hal) {
 	// Create device object
