@@ -18,7 +18,7 @@ static void decibel_handler(TF_SoundPressureLevel *device, uint16_t decibel,
                             void *user_data) {
 	(void)device; (void)user_data; // avoid unused parameter warning
 
-	tf_hal_printf("Decibel: %d 1/%d dB(A)\n", decibel, 10.0);
+	tf_hal_printf("Decibel: %d 1/%d dB(A)\n", decibel, 10);
 }
 
 static TF_SoundPressureLevel spl;
