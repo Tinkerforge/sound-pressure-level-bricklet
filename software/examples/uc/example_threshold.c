@@ -9,8 +9,8 @@
 
 void check(int rc, const char* msg);
 
-void example_setup(TF_HalContext *hal);
-void example_loop(TF_HalContext *hal);
+void example_setup(TF_HAL *hal);
+void example_loop(TF_HAL *hal);
 
 
 // Callback function for decibel callback
@@ -23,7 +23,7 @@ static void decibel_handler(TF_SoundPressureLevel *device, uint16_t decibel,
 
 static TF_SoundPressureLevel spl;
 
-void example_setup(TF_HalContext *hal) {
+void example_setup(TF_HAL *hal) {
 	// Create device object
 	check(tf_sound_pressure_level_create(&spl, UID, hal), "create device object");
 
@@ -37,7 +37,7 @@ void example_setup(TF_HalContext *hal) {
 	tf_sound_pressure_level_set_decibel_callback_configuration(&spl, 1000, false, '>', 60*10, 0);
 }
 
-void example_loop(TF_HalContext *hal) {
+void example_loop(TF_HAL *hal) {
 	// Poll for callbacks
 	tf_hal_callback_tick(hal, 0);
 }
